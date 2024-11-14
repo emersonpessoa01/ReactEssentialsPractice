@@ -1,0 +1,83 @@
+/* Remove margens, paddings e bordas padrão de todos os elementos */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Definindo o tamanho da fonte e altura da linha */
+html {
+  font-size: 100%; /* Padrão de 16px */
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%; /* Evita que dispositivos ajustem o tamanho da fonte */
+  scroll-behavior: smooth;
+}
+
+/* Remove o sublinhado dos links e define cor de link padrão */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove bullets de listas e espaçamento interno */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Define altura mínima da página */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed; /* Melhora a legibilidade */
+  font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+/* Remove formatação de botões e campos de formulário */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* Ajustes para imagens */
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* Remove o estilo padrão dos elementos de título */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+/* Previne overflow horizontal */
+body {
+  overflow-x: hidden;
+}
+
+/* Define cores padrão para fundo e texto */
+body,
+button,
+input,
+select,
+textarea {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Ajusta tamanhos de fonte para dispositivos móveis */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+    animation: none;
+    transition: none;
+  }
+}
