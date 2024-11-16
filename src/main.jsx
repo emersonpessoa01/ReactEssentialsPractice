@@ -1,10 +1,11 @@
 import { createRoot } from "react-dom/client";
-import "./styles/reset.css";
+// import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
-import { BrowserRouter as Router} from 'react-router-dom';
+import { StrictMode } from "react";
+// import "./index.css";
 
 createRoot(document.getElementById("root")).render(
-  <Router>
+  <StrictMode>
     <App />
-  </Router>
+  </StrictMode>
 );
