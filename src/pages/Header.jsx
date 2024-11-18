@@ -1,4 +1,8 @@
-const Header = ({ darkMode, setDarkMode, sidebarOpen, setSidebarOpen }) => {
+import { useContext } from "react";
+import { AppContext } from "../App";
+
+const Header = () => {
+  const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = useContext(AppContext);
   return (
     <header
       className={`fixed w-full z-30 flex items-center justify-between h-16 px-6 ${darkMode ? "bg-gray-800" : "bg-white text-indigo-950"} shadow-lg`}
@@ -20,13 +24,13 @@ const Header = ({ darkMode, setDarkMode, sidebarOpen, setSidebarOpen }) => {
   );
 };
 
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-Header.propTypes = {
-  darkMode: PropTypes.bool.isRequired,
-  setDarkMode: PropTypes.func.isRequired,
-  sidebarOpen: PropTypes.bool.isRequired,
-  setSidebarOpen: PropTypes.func.isRequired,
-};
+// Header.propTypes = {
+//   darkMode: PropTypes.bool.isRequired,
+//   setDarkMode: PropTypes.func.isRequired,
+//   sidebarOpen: PropTypes.bool.isRequired,
+//   setSidebarOpen: PropTypes.func.isRequired,
+// };
 
 export default Header;

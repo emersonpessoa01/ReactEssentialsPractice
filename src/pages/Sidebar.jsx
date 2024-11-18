@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { menuItems } from "./menuItems";
-const Sidebar = ({ sidebarOpen, darkMode, handleModuleChange, currentMode }) => {
+import { AppContext } from "../App";
+const Sidebar = () => {
+  const { sidebarOpen, darkMode, handleModuleChange, currentMode }=useContext(AppContext);
   return (
     <aside
       className={`fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
@@ -26,12 +29,12 @@ const Sidebar = ({ sidebarOpen, darkMode, handleModuleChange, currentMode }) => 
   );
 };
 
-import PropTypes from "prop-types";
-Sidebar.propTypes = {
-  sidebarOpen: PropTypes.bool.isRequired,
-  darkMode: PropTypes.bool.isRequired,
-  handleModuleChange: PropTypes.func.isRequired,
-  currentMode: PropTypes.string.isRequired,
-};
+// import PropTypes from "prop-types";
+// Sidebar.propTypes = {
+//   sidebarOpen: PropTypes.bool.isRequired,
+//   darkMode: PropTypes.bool.isRequired,
+//   handleModuleChange: PropTypes.func.isRequired,
+//   currentMode: PropTypes.string.isRequired,
+// };
 
 export default Sidebar;
