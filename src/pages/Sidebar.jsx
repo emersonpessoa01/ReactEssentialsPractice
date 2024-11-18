@@ -1,8 +1,10 @@
-import { useContext } from "react";
+// import { useContext } from "react";
+// import { AppContext } from "../App";
 import { menuItems } from "./menuItems";
-import { AppContext } from "../App";
+import UseAppContext from "../hook/UseAppContext";
 const Sidebar = () => {
-  const { sidebarOpen, darkMode, handleModuleChange, currentMode }=useContext(AppContext);
+  // const { sidebarOpen, darkMode, handleModuleChange, currentMode }=useContext(AppContext);
+  const { sidebarOpen, darkMode, handleModuleChange, currentMode }=UseAppContext()
   return (
     <aside
       className={`fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 

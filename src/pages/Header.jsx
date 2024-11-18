@@ -1,8 +1,10 @@
-import { useContext } from "react";
-import { AppContext } from "../App";
+// import { useContext } from "react";
+// import { AppContext } from "../App";
+import UseAppContext from "../hook/UseAppContext";
 
 const Header = () => {
-  const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = useContext(AppContext);
+  // const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = useContext(AppContext);
+  const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = UseAppContext()
   return (
     <header
       className={`fixed w-full z-30 flex items-center justify-between h-16 px-6 ${darkMode ? "bg-gray-800" : "bg-white text-indigo-950"} shadow-lg`}

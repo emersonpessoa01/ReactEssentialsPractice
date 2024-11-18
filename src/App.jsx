@@ -1,8 +1,9 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import "./styles/globals.css";
 import Header from "./pages/Header";
 import Sidebar from "./pages/Sidebar";
-const AppContext = createContext(null);
+import { AppContext } from "./context/AppContext";
+
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
