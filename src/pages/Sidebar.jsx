@@ -4,10 +4,10 @@ import { menuItems } from "./menuItems";
 import UseAppContext from "../hook/UseAppContext";
 const Sidebar = () => {
   // const { sidebarOpen, darkMode, handleModuleChange, currentMode }=useContext(AppContext);
-  const { sidebarOpen, darkMode, handleModuleChange, currentMode }=UseAppContext()
+  const { sidebarOpen, darkMode, handleModuleChange, currentMode } = UseAppContext();
   return (
     <aside
-      className={`fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+      className={`fixed z-30 left-0 top-16 h-[calc(100vh-4rem)] w-64 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
     transition-transform duration-300 ease-in-out ${darkMode ? "bg-gray-800" : "bg-white"} shadow-lg overflow-y-auto`}
     >
       <nav className="p-4">

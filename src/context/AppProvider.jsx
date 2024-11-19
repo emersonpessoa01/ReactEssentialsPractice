@@ -8,12 +8,13 @@ const reducer = (state, action) => {
     case "TOGGLE_SIDEBAR":
       return { ...state, sidebarOpen: action.payload };
     case "SET_CURRENT_MODE":
-      return { ...state, currentMode: action.payload };
+      return { ...state, currentMode: action.payload, count: 0 }; // Zera o contador
     case "SET_LOADING":
       return { ...state, loading: action.payload };
+    case "SET_COUNT":
+      return { ...state, count: action.payload };
     default:
-      //   return state;
-      return "Esta ação não existe";
+      return state;
   }
 };
 export default function AppProvider({ children }) {
@@ -34,6 +35,7 @@ export default function AppProvider({ children }) {
     sidebarOpen: true,
     currentMode: "counter",
     loading: false,
+    count: 0,
   });
 
   const handleModuleChange = (moduleId) => {
@@ -53,7 +55,7 @@ export default function AppProvider({ children }) {
     }, 2000);
   };
 
-  const { darkMode, sidebarOpen, currentMode, loading } = state;
+  const { darkMode, sidebarOpen, currentMode, loading, count } = state;
   return (
     /* <AppContext.Provider
       value={{ darkMode, setDarkMode, sidebarOpen, setSidebarOpen, currentMode, setCurrentMode, loading, setLoading, handleModuleChange }}
@@ -64,14 +66,22 @@ export default function AppProvider({ children }) {
         sidebarOpen,
         currentMode,
         loading,
+        count,
         handleModuleChange,
         setDarkMode: (payload) => dispatch({ type: "SET_DARK_MODE", payload }),
         setSidebarOpen: (payload) => dispatch({ type: "TOGGLE_SIDEBAR", payload }),
         setCurrentMode: (payload) => dispatch({ type: "SET_CURRENT_MODE", payload }),
         setLoading: (payload) => dispatch({ type: "SET_LOADING", payload }),
+        setCount: (payload) => {
+          if (typeof payload === "function") {
+            dispatch({ type: "SET_COUNT", payload: payload(state.count) });
+          } else {
+            dispatch({ type: "SET_COUNT", payload });
+          }
+        },
       }}
     >
-      <div className={`min-h-screen ${state.darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-indigo-950"}`}>{children}</div>
+      <div className={`min-h-screen ${darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-indigo-950"}`}>{children}</div>
     </AppContext.Provider>
   );
 }
