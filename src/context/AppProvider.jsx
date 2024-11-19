@@ -14,7 +14,7 @@ const reducer = (state, action) => {
     case "SET_COUNT":
       return { ...state, count: action.payload };
     case "SET_BACKGROUND_COLOR":
-      return { ...state, backgroundColor: action.payload };
+      return { ...state, backgroundColor: action.payload};//Retorna o valor do backgroundColor
     default:
       return state;
   }
@@ -46,6 +46,10 @@ export default function AppProvider({ children }) {
       type: "SET_LOADING",
       payload: true,
     });
+    dispatch({
+      type: "SET_BACKGROUND_COLOR",
+      payload: "#fff",
+    })
     dispatch({
       type: "SET_CURRENT_MODE",
       payload: moduleId,
