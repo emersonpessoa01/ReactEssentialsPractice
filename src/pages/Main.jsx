@@ -1,4 +1,5 @@
 import UseAppContext from "../hook/UseAppContext";
+import BackgroundColorChanger from "./BackgroundColorChanger";
 import Counter from "./Counter";
 import Loader from "./Loader";
 
@@ -13,6 +14,7 @@ export default function Main() {
           ) : (
             <>
               {currentMode === "counter" && <Counter />}
+              {currentMode === "background" && <BackgroundColorChanger />}
               
             </>
           )}

@@ -13,6 +13,8 @@ const reducer = (state, action) => {
       return { ...state, loading: action.payload };
     case "SET_COUNT":
       return { ...state, count: action.payload };
+    case "SET_BACKGROUND_COLOR":
+      return { ...state, backgroundColor: action.payload };
     default:
       return state;
   }
@@ -36,6 +38,7 @@ export default function AppProvider({ children }) {
     currentMode: "counter",
     loading: false,
     count: 0,
+    backgroundColor: "#fff",
   });
 
   const handleModuleChange = (moduleId) => {
@@ -55,7 +58,7 @@ export default function AppProvider({ children }) {
     }, 2000);
   };
 
-  const { darkMode, sidebarOpen, currentMode, loading, count } = state;
+  const { darkMode, sidebarOpen, currentMode, loading, count, backgroundColor } = state;
   return (
     /* <AppContext.Provider
       value={{ darkMode, setDarkMode, sidebarOpen, setSidebarOpen, currentMode, setCurrentMode, loading, setLoading, handleModuleChange }}
@@ -67,6 +70,7 @@ export default function AppProvider({ children }) {
         currentMode,
         loading,
         count,
+        backgroundColor,
         handleModuleChange,
         setDarkMode: (payload) => dispatch({ type: "SET_DARK_MODE", payload }),
         setSidebarOpen: (payload) => dispatch({ type: "TOGGLE_SIDEBAR", payload }),
@@ -79,6 +83,7 @@ export default function AppProvider({ children }) {
             dispatch({ type: "SET_COUNT", payload });
           }
         },
+        setBackgroundColor: (payload) => dispatch({ type: "SET_BACKGROUND_COLOR", payload }),
       }}
     >
       <div className={`min-h-screen ${darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-indigo-950"}`}>{children}</div>
