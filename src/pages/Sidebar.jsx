@@ -16,8 +16,8 @@ const Sidebar = () => {
             <li key={item.id}>
               <button
                 onClick={() => handleModuleChange(item.id)}
-                className={`w-full flex items-center space-x-3 p-3 rounded-lg ${
-                  darkMode ? "hover:bg-gray-700" : "hover:bg-gray-400"
+                className={`w-full flex items-center space-x-3 p-3 rounded-lg hover:text-gray-100 ${
+                  darkMode ? "hover:bg-gray-700" : "hover:bg-blue-800"
                 } transition-colors duration-200 ${currentMode === item.id ? "bg-blue-500 text-white" : ""}`}
               >
                 <span className="text-xl">{item.icon}</span>

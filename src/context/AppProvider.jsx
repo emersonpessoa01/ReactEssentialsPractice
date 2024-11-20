@@ -14,11 +14,35 @@ const reducer = (state, action) => {
     case "SET_COUNT":
       return { ...state, count: action.payload };
     case "SET_BACKGROUND_COLOR":
-      return { ...state, backgroundColor: action.payload};//Retorna o valor do backgroundColor
+      return { ...state, backgroundColor: action.payload };
+
+    // Ações para o TodoList
+    case "ADD_TODO":
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+      };
+    case "EDIT_TODO":
+      return {
+        ...state,
+        todos: state.todos.map((todo) => (todo.id === action.payload.id ? { ...todo, text: action.payload.text } : todo)),
+      };
+    case "DELETE_TODO":
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
+      };
+    case "TOGGLE_COMPLETE":
+      return {
+        ...state,
+        todos: state.todos.map((todo) => (todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo)),
+      };
     default:
       return state;
   }
 };
+
+// AppProvider com o estado inicial atualizado
 export default function AppProvider({ children }) {
   /* const [darkMode, setDarkMode] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -39,20 +63,22 @@ export default function AppProvider({ children }) {
     loading: false,
     count: 0,
     backgroundColor: "#fff",
+    todos: [],
   });
 
-  const handleModuleChange = (moduleId) => {
+  const handleModuleChange = (id) => {
     dispatch({
       type: "SET_LOADING",
       payload: true,
     });
+    //Retorna o valor inicial do backgroundColor
     dispatch({
       type: "SET_BACKGROUND_COLOR",
-      payload: "#fff",
-    })
+      payload: "#f7f7f7",
+    });
     dispatch({
       type: "SET_CURRENT_MODE",
-      payload: moduleId,
+      payload: id,
     });
     setTimeout(() => {
       dispatch({
@@ -60,9 +86,37 @@ export default function AppProvider({ children }) {
         payload: false,
       });
     }, 2000);
+    dispatch({
+      type: "TOGGLE_COMPLETE",
+      payload: id,
+    });
   };
 
-  const { darkMode, sidebarOpen, currentMode, loading, count, backgroundColor } = state;
+  const addTodo = (todo) => {
+    dispatch({
+      type: "ADD_TODO",
+      payload: todo,
+    });
+  };
+
+  const editTodo = (id, text) => {
+    dispatch({
+      type: "EDIT_TODO",
+      payload: {
+        id,
+        text,
+      },
+    });
+  };
+
+  const deleteTodo = (id) => {
+    dispatch({
+      type: "DELETE_TODO",
+      payload: id,
+    });
+  };
+
+  const { darkMode, sidebarOpen, currentMode, loading, count, backgroundColor, todos } = state;
   return (
     /* <AppContext.Provider
       value={{ darkMode, setDarkMode, sidebarOpen, setSidebarOpen, currentMode, setCurrentMode, loading, setLoading, handleModuleChange }}
@@ -75,7 +129,12 @@ export default function AppProvider({ children }) {
         loading,
         count,
         backgroundColor,
+        todos,
         handleModuleChange,
+        addTodo,
+        editTodo,
+        deleteTodo,
+        toggleComplete: (id) => dispatch({ type: "TOGGLE_COMPLETE", payload: id }),
         setDarkMode: (payload) => dispatch({ type: "SET_DARK_MODE", payload }),
         setSidebarOpen: (payload) => dispatch({ type: "TOGGLE_SIDEBAR", payload }),
         setCurrentMode: (payload) => dispatch({ type: "SET_CURRENT_MODE", payload }),

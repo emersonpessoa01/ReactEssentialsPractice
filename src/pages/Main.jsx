@@ -1,8 +1,9 @@
+
 import UseAppContext from "../hook/UseAppContext";
 import BackgroundColorChanger from "./BackgroundColorChanger";
 import Counter from "./Counter";
 import Loader from "./Loader";
-
+import { TodoList } from "./TodoList";
 export default function Main() {
   const { sidebarOpen, darkMode, loading, currentMode } = UseAppContext();
   return (
@@ -15,6 +16,7 @@ export default function Main() {
             <>
               {currentMode === "counter" && <Counter />}
               {currentMode === "background" && <BackgroundColorChanger />}
+              {currentMode === "todo" && <TodoList />}
               
             </>
           )}
