@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import UseAppContext from '../hook/UseAppContext';
+import { AppContext } from '../App';
 
 const CountdownTimer = () => {
+  const{darkMode}=UseAppContext(AppContext)
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -30,7 +33,9 @@ const CountdownTimer = () => {
           min="0"
           value={time}
           onChange={(e) => setTime(Number(e.target.value))}
-          className="border rounded p-2"
+          className={`flex-1 border rounded-lg px-4 py-2 bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 ${
+            darkMode ? "bg-gray-800" : "bg-white"
+          }`}
         />
       </div>
       <div className="text-4xl font-bold mb-4">{time}s</div>

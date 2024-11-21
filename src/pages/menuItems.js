@@ -35,11 +35,11 @@ export const menuItems = [
     id: "gallery", 
     icon: "🖼️" 
   },
-  { name: "Countdown", 
+  { name: "9. Countdown", 
     id: "countdown", 
     icon: "⏱️" 
   },
-  { name: "Tabs", 
+  { name: "10. Tabs", 
     id: "tabs", 
     icon: "📑" 
   },

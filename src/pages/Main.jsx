@@ -1,4 +1,3 @@
-
 import Timer from "../components/Timer";
 import UseAppContext from "../hook/UseAppContext";
 import BackgroundColorChanger from "../components/BackgroundColorChanger";
@@ -9,6 +8,8 @@ import FilterList from "../components/FilteredList";
 import RegisterForm from "../components/RegisterForm";
 import FetchPosts from "../components/FetchPosts";
 import ImageGallery from "../components/ImageGallery";
+import CountdownTimer from "../components/CountdownTimer";
+import Tabs from "../components/Tabs";
 export default function Main() {
   const { sidebarOpen, darkMode, loading, currentMode } = UseAppContext();
   return (
@@ -23,11 +24,12 @@ export default function Main() {
               {currentMode === "background" && <BackgroundColorChanger />}
               {currentMode === "todo" && <TodoList />}
               {currentMode === "timer" && <Timer />}
-              {currentMode ==="filter" && <FilterList />}
+              {currentMode === "filter" && <FilterList />}
               {currentMode === "register" && <RegisterForm />}
               {currentMode === "posts" && <FetchPosts />}
               {currentMode === "gallery" && <ImageGallery />}
-              
+              {currentMode === "countdown" && <CountdownTimer />}
+              {currentMode === "tabs" && <Tabs />}
             </>
           )}
         </div>
