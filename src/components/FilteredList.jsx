@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const FilterList = () => {
-  const names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'];
-  const [filter, setFilter] = useState('');
+  const names = ["Alice", "Bob", "Charlie", "Diana", "Eve"];
+  const [filter, setFilter] = useState("");
+  const [darkMode] = useState(names);
 
-  const filteredNames = names.filter((name) =>
-    name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredNames = names.filter((name) => name.toLowerCase().includes(filter.toLowerCase()));
 
   return (
     <div className="p-6">
@@ -16,11 +15,11 @@ const FilterList = () => {
         placeholder="Filtrar nomes"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
-        className="border rounded p-2 mb-4 w-full"
+        className={`border rounded p-2 mb-4 w-full focus:outline-none focus:ring-2 focus:ring-sky-500 ${darkMode ? "bg-gray-800" : "bg-white"}`}
       />
       <ul className="space-y-2">
         {filteredNames.map((name, index) => (
-          <li key={index} className="p-2 border rounded">
+          <li key={index} className={`p-2 border rounded `}>
             {name}
           </li>
         ))}

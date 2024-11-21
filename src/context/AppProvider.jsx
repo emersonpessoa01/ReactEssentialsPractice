@@ -74,7 +74,7 @@ export default function AppProvider({ children }) {
     //Retorna o valor inicial do backgroundColor
     dispatch({
       type: "SET_BACKGROUND_COLOR",
-      payload: "#f7f7f7",
+      payload: "rgba(255,255,255,0.0)", //Transparente - Retorna o valor inicial do backgroundColor
     });
     dispatch({
       type: "SET_CURRENT_MODE",

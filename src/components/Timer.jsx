@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
@@ -14,7 +14,7 @@ const Timer = () => {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, seconds]);
 
   const resetTimer = () => {
     setSeconds(0);
@@ -22,7 +22,7 @@ const Timer = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 ">
       <h1 className="text-2xl font-bold mb-4">Temporizador</h1>
       <div className="text-4xl font-bold mb-4">{seconds}s</div>
       <div className="space-x-4">

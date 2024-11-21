@@ -1,70 +1,103 @@
-import React, { useState } from 'react';
+import { useContext, useEffect, useRef, useState } from "react";
+import { AppContext } from "../context/AppContext";
 
-const TodoList = () => {
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
+export const TodoList = () => {
+  const { todos, toggleComplete, addTodo, editTodo, deleteTodo, darkMode } = useContext(AppContext);
+  const [inputValue, setInputValue] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(""); // Estado para a mensagem de erro
+  const inputRef = useRef(null);
 
-  const addTask = () => {
-    if (newTask.trim()) {
-      setTasks([...tasks, { text: newTask, completed: false }]);
-      setNewTask('');
+  // Função para adicionar ou atualizar a tarefa
+  const handleAddOrUpdate = () => {
+    if (!inputValue.trim()) {
+      setErrorMessage("A entrada não pode está vazia!"); // Define a mensagem de erro
+      return;
+    }
+
+    if (editId) {
+      editTodo(editId, inputValue);
+      setEditId(null);
+    } else {
+      addTodo({
+        id: Date.now(),
+        text: inputValue,
+        completed: false,
+      });
+    }
+    setInputValue(""); // Limpa o campo após a operação
+    setErrorMessage(""); // Limpa a mensagem de erro
+
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   };
 
-  const toggleTask = (index) => {
-    setTasks(tasks.map((task, i) =>
-      i === index ? { ...task, completed: !task.completed } : task
-    ));
+  // Captura o Enter no input
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddOrUpdate();
+    }
   };
 
-  const deleteTask = (index) => {
-    setTasks(tasks.filter((_, i) => i !== index));
-  };
+  // Garante que o foco fique no input ao editar
+  useEffect(() => {
+    if (editId !== null && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [editId]);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Lista de Tarefas</h1>
-      <div className="flex mb-4">
-        <input
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Adicionar tarefa"
-          className="flex-grow border rounded p-2"
-        />
-        <button
-          onClick={addTask}
-          className="ml-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-        >
-          Adicionar
-        </button>
+    <div className="p-6 space-y-4">
+      <div className="flex flex-col space-y-2">
+        <div className="flex space-x-2">
+          <input
+            autoFocus
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Add or edit todo..."
+            className={`flex-1 border rounded-lg px-4 py-2 bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 ${
+              darkMode ? "bg-gray-800" : "bg-white"
+            }`}
+          />
+          <button onClick={handleAddOrUpdate} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-800">
+            {editId ? "Update" : "Add"}
+          </button>
+        </div>
+        {errorMessage && (
+          <span className="text-red-500 text-sm">{errorMessage}</span> // Mensagem de erro
+        )}
       </div>
       <ul className="space-y-2">
-        {tasks.map((task, index) => (
-          <li
-            key={index}
-            className={`flex items-center justify-between p-2 border rounded ${
-              task.completed ? 'bg-gray-300' : ''
-            }`}
-          >
-            <span
-              onClick={() => toggleTask(index)}
-              className={`cursor-pointer ${
-                task.completed ? 'line-through' : ''
-              }`}
-            >
-              {task.text}
-            </span>
-            <button
-              onClick={() => deleteTask(index)}
-              className="text-red-500 hover:text-red-600"
-            >
-              Remover
-            </button>
+        {todos.map((todo) => (
+          <li key={todo.id} className={`flex items-center justify-between p-4 rounded-lg shadow ${darkMode ? "border border-slate-800" : "border"}`}>
+            <div className="flex items-center space-x-2">
+              <input type="checkbox" checked={todo.completed} onChange={() => toggleComplete(todo.id)} />
+              <span className={`${todo.completed ? "line-through text-gray-500" : ""} ${darkMode ? "text-white" : "text-gray-800"}`}>
+                {todo.text}
+              </span>
+            </div>
+            <div className="space-x-2">
+              <button
+                onClick={() => {
+                  setInputValue(todo.text);
+                  setEditId(todo.id);
+                }}
+                className="text-blue-500"
+              >
+                Edit
+              </button>
+              <button onClick={() => deleteTodo(todo.id)} className="text-red-500">
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>
     </div>
   );
 };
-
-export default TodoList;
