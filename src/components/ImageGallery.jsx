@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const images = [
   'https://via.placeholder.com/300x200',

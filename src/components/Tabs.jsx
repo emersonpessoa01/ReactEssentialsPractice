@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const tabsContent = {
   Sobre: 'Bem-vindo à aba Sobre! Aqui você encontrará informações sobre nós.',

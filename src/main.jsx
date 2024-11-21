@@ -1,8 +1,13 @@
 import { createRoot } from "react-dom/client";
-// import { BrowserRouter as Router } from "react-router-dom";
+
+/* Importanto Biblioteca do FontAwesome */
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { fas } from "@fortawesome/free-solid-svg-icons"; // Pacote de ícones sólidos
+library.add(fas); // Adiciona todos os ícones sólidos
+
 import App from "./App";
 import { StrictMode } from "react";
-// import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

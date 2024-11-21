@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { TodoList } from "../components/TodoList";
 import FilterList from "../components/FilteredList";
 import RegisterForm from "../components/RegisterForm";
+import FetchPosts from "../components/FetchPosts";
 export default function Main() {
   const { sidebarOpen, darkMode, loading, currentMode } = UseAppContext();
   return (
@@ -23,6 +24,7 @@ export default function Main() {
               {currentMode === "timer" && <Timer />}
               {currentMode ==="filter" && <FilterList />}
               {currentMode === "register" && <RegisterForm />}
+              {currentMode === "posts" && <FetchPosts />}
               
             </>
           )}
