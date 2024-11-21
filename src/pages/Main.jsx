@@ -8,6 +8,7 @@ import { TodoList } from "../components/TodoList";
 import FilterList from "../components/FilteredList";
 import RegisterForm from "../components/RegisterForm";
 import FetchPosts from "../components/FetchPosts";
+import ImageGallery from "../components/ImageGallery";
 export default function Main() {
   const { sidebarOpen, darkMode, loading, currentMode } = UseAppContext();
   return (
@@ -25,6 +26,7 @@ export default function Main() {
               {currentMode ==="filter" && <FilterList />}
               {currentMode === "register" && <RegisterForm />}
               {currentMode === "posts" && <FetchPosts />}
+              {currentMode === "gallery" && <ImageGallery />}
               
             </>
           )}

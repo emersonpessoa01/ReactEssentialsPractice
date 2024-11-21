@@ -1,13 +1,31 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const images = [
-  'https://via.placeholder.com/300x200',
-  'https://via.placeholder.com/300x201',
-  'https://via.placeholder.com/300x202',
+  "https://via.placeholder.com/300x200",
+  "https://via.placeholder.com/300x201",
+  "https://via.placeholder.com/300x202",
 ];
 
 const ImageGallery = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
+  const closeModal = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const navigateImages = (direction) => {
+    if (selectedImageIndex === null) return;
+
+    if (direction === "prev") {
+      setSelectedImageIndex((prevIndex) =>
+        prevIndex > 0 ? prevIndex - 1 : images.length - 1
+      );
+    } else if (direction === "next") {
+      setSelectedImageIndex((prevIndex) =>
+        prevIndex < images.length - 1 ? prevIndex + 1 : 0
+      );
+    }
+  };
 
   return (
     <div className="p-6">
@@ -19,20 +37,38 @@ const ImageGallery = () => {
             src={src}
             alt={`Imagem ${index + 1}`}
             className="cursor-pointer border rounded hover:opacity-75"
-            onClick={() => setSelectedImage(src)}
+            onClick={() => setSelectedImageIndex(index)}
           />
         ))}
       </div>
-      {selectedImage && (
+      {selectedImageIndex !== null && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center">
-          <div className="relative">
-            <img src={selectedImage} alt="Imagem Ampliada" className="rounded shadow-lg" />
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-2 right-2 bg-white rounded-full p-2"
-            >
-              ✖
-            </button>
+          <div className="relative flex flex-col items-center">
+            <img
+              src={images[selectedImageIndex]}
+              alt={`Imagem ${selectedImageIndex + 1}`}
+              className="rounded shadow-lg"
+            />
+            <div className="flex space-x-4 mt-4">
+              <button
+                onClick={() => navigateImages("prev")}
+                className="bg-white rounded-full px-4 py-2"
+              >
+                ⬅ Anterior
+              </button>
+              <button
+                onClick={closeModal}
+                className="bg-red-500 text-white rounded-full px-4 py-2"
+              >
+                Fechar
+              </button>
+              <button
+                onClick={() => navigateImages("next")}
+                className="bg-white rounded-full px-4 py-2"
+              >
+                Próxima ➡
+              </button>
+            </div>
           </div>
         </div>
       )}

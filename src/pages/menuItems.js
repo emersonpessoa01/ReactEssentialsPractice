@@ -1,37 +1,37 @@
 export const menuItems = [
   {
-    name: "Counter",
+    name: "1. Counter",
     id: "counter",
     icon: "🔢",
   },
-  { name: "Background Color", 
+  { name: "2. Background Color", 
     id: "background", 
     icon: "🎨" 
   },
   {
-    name: "Todo List",
+    name: "3. Todo List",
     id: "todo",
     icon: "📝",
   },
-  { name: "Timer", 
+  { name: "4. Timer", 
     id: "timer", 
     icon: "⏲️" 
   },
-  { name: "Name Filter", 
+  { name: "5. Name Filter", 
     id: "filter", 
     icon: "🔍" 
   },
   { 
-    name: "Registration", 
+    name: "6. Registration", 
     id: "register", 
     icon: "📝" 
   },
   { 
-    name: "API Posts", 
+    name: "7. API Posts", 
     id: "posts", 
     icon: "📡" 
   },
-  { name: "Image Gallery", 
+  { name: "8. Image Gallery", 
     id: "gallery", 
     icon: "🖼️" 
   },
