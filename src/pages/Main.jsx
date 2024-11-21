@@ -6,6 +6,7 @@ import Counter from "../components/Counter";
 import Loader from "../components/Loader";
 import { TodoList } from "../components/TodoList";
 import FilterList from "../components/FilteredList";
+import RegisterForm from "../components/RegisterForm";
 export default function Main() {
   const { sidebarOpen, darkMode, loading, currentMode } = UseAppContext();
   return (
@@ -21,6 +22,7 @@ export default function Main() {
               {currentMode === "todo" && <TodoList />}
               {currentMode === "timer" && <Timer />}
               {currentMode ==="filter" && <FilterList />}
+              {currentMode === "register" && <RegisterForm />}
               
             </>
           )}
