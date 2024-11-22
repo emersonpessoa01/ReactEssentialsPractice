@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import UseAppContext from '../hook/UseAppContext';
-import { AppContext } from '../App';
+import { useState, useEffect } from "react";
+import UseAppContext from "../hook/UseAppContext";
+import { AppContext } from "../App";
 
 const CountdownTimer = () => {
-  const{darkMode}=UseAppContext(AppContext)
+  const { darkMode } = UseAppContext(AppContext);
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -13,7 +13,7 @@ const CountdownTimer = () => {
       interval = setInterval(() => setTime((prev) => prev - 1), 1000);
     }
     if (time === 0 && isRunning) {
-      alert('Tempo acabou!');
+      alert("Tempo acabou!");
       setIsRunning(false);
     }
     return () => clearInterval(interval);
@@ -40,22 +40,13 @@ const CountdownTimer = () => {
       </div>
       <div className="text-4xl font-bold mb-4">{time}s</div>
       <div className="space-x-4">
-        <button
-          onClick={() => setIsRunning(true)}
-          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-        >
+        <button onClick={() => setIsRunning(true)} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
           Iniciar
         </button>
-        <button
-          onClick={() => setIsRunning(false)}
-          className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-        >
+        <button onClick={() => setIsRunning(false)} className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
           Pausar
         </button>
-        <button
-          onClick={resetTimer}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-        >
+        <button onClick={resetTimer} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
           Resetar
         </button>
       </div>
