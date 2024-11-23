@@ -6,13 +6,53 @@ body {
   @apply bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --color-primary: #36b864;
+  --color-secondary: #666666;
+  --color-background: #ffffff;
+  --color-text: #111d15;
+  --color-divider: #83a790;
+  --color-accent-light: #f5f4f4;
+  --color-accent-background: #e8faea;
+}
 
-html{
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Be Vietnam Pro", sans-serif;
+  box-sizing: border-box;
+}
+
+html {
   height: 100dvh;
   margin: 0;
   padding: 0;
   overflow-x: auto; /* Garante que o scroll lateral funcione */
   overflow-y: scroll; /* Força a barra de rolagem vertical, se necessário */
+  scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5rem;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #008542;
 }
 
 main {
@@ -48,50 +88,4 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield; /* Garantir aparência no Firefox */
   appearance: textfield; /* Para navegadores como Edge */
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-:root {
-  --color-primary: #36b864;
-  --color-secondary: #666666;
-  --color-background: #ffffff;
-  --color-text: #111d15;
-  --color-divider: #83a790;
-  --color-accent-light: #f5f4f4;
-  --color-accent-background: #e8faea;
-}
-
-* {
-  margin: 0px;
-  padding: 0px;
-  text-decoration: none;
-  list-style: none;
-  font-family: "Be Vietnam Pro", sans-serif;
-  color: var(--color-text);
-  box-sizing: border-box;
-  
-}
-
-html {
-  scroll-padding-top: 9rem;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) transparent;
-}
-
-html::-webkit-scrollbar {
-  width: 0.7rem;
-}
-
-html::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-html::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 5rem;
-}
-
-html::-webkit-scrollbar-thumb:hover {
-  background: #008542;
 }
