@@ -1,6 +1,6 @@
 # Projeto de Componentes React
 
-Este repositório contém a implementação de 10 componentes interativos desenvolvidos com React, utilizando hooks como `useState`,`useEffect`,`useContext`, `useReduce` e `useRef`. Cada componente aborda um conceito fundamental da biblioteca React, com desafios adicionais para consolidar o aprendizado.
+Este repositório contém a implementação de 10 componentes interativos desenvolvidos com React, utilizando hooks como `useState`,`useEffect`,`useContext`, `useReducer` e `useRef`. Cada componente aborda um conceito fundamental da biblioteca React, com desafios adicionais para consolidar o aprendizado.
 
 ## Atividades Implementadas
 
