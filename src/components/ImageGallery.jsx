@@ -24,21 +24,21 @@ const ImageGallery = () => {
   return (
     <div className="w-full h-full">
       <h1 className="text-2xl font-bold mb-4">Galeria de Imagens</h1>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full sm:w-auto gap-4">
         {images.map((src, index) => (
           <img
             key={index}
             src={src}
             alt={`Imagem ${index + 1}`}
-            className="cursor-pointer border rounded hover:opacity-75"
+            className="w-full cursor-pointer border rounded hover:opacity-75"
             onClick={() => setSelectedImageIndex(index)}
           />
         ))}
       </div>
       {selectedImageIndex !== null && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center">
-          <div className="relative flex flex-col items-center">
-            <img src={images[selectedImageIndex]} alt={`Imagem ${selectedImageIndex + 1}`} className="rounded shadow-lg" />
+          <div className="relative flex flex-col items-center w-full">
+            <img src={images[selectedImageIndex]} alt={`Imagem ${selectedImageIndex + 1}`} className="p-4 rounded-3xl w-full max-w-screen-sm" />
             <div className="flex space-x-4 mt-4">
               <button
                 onClick={() => navigateImages("prev")}
