@@ -4,7 +4,7 @@ const Header = () => {
   const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = UseAppContext();
 
   return (
-    <div className={`fixed top-0 left-0 right-0 ${darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"} shadow-sm z-40`}>
+    <div className={`fixed top-0 left-0 right-0 ${darkMode ? "bg-gray-800 text-gray-100 !important" : "bg-white text-gray-900 !important"} shadow-sm z-40`}>
       <div className="flex items-center justify-between px-6 py-4">
         {/* Botão do menu hamburger */}
         <button
