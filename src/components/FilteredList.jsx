@@ -8,7 +8,7 @@ const FilterList = () => {
   const filteredNames = names.filter((name) => name.toLowerCase().includes(filter.toLowerCase()));
 
   return (
-    <div className={`p-6 w-full h-full ${darkMode ? "bg-gray-100 text-gray-600" : "bg-gray-800 text-gray-100"}`}>
+    <div className={`p-6 w-full h-full ${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-100 text-gray-800"}`}>
       <h1 className="text-2xl font-bold mb-4">Filtro de Lista</h1>
       <button
         onClick={() => setDarkMode(!darkMode)} // Alterna o modo escuro
@@ -23,13 +23,13 @@ const FilterList = () => {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         className={`border rounded p-2 mb-4 w-full focus:outline-none focus:ring-2 focus:ring-sky-500 ${
-          darkMode ? "bg-gray-100 text-gray-600" : "bg-gray-800 text-gray-100"
+          darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-100 text-gray-800"
         }`}
       />
       {filteredNames.length > 0 ? (
         <ul className="space-y-2">
           {filteredNames.map((name, index) => (
-            <li key={index} className={`p-2 border rounded shadow-md ${darkMode ? "bg-gray-100 text-gray-600" : "bg-gray-800 text-gray-100"}`}>
+            <li key={index} className={`p-2 border rounded shadow-md ${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-100 text-gray-800"}`}>
               {name}
             </li>
           ))}
