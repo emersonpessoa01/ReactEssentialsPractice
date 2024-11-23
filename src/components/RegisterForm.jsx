@@ -97,7 +97,7 @@ const RegisterForm = () => {
             className="absolute right-2 top-2 text-sm text-blue-500 focus:outline-none"
           >
             {/* Ícone de olho */}
-            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
           </button>
           {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
         </div>
