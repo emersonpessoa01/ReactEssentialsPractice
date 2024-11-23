@@ -61,93 +61,96 @@ export const TodoList = () => {
   };
 
   return (
-    <div className="p-6 space-y-4">
-      <div className="flex flex-col space-y-2">
-        <div className="flex space-x-2">
+    <div className="w-full p-6 space-y-4">
+  <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+    <input
+      autoFocus
+      ref={inputRef}
+      type="text"
+      value={inputValue}
+      onChange={(e) => setInputValue(e.target.value)}
+      onKeyDown={handleKeyDown}
+      placeholder="Add or edit todo..."
+      className={`flex-1 min-w-0 border rounded-lg px-4 py-2 bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 ${
+        darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+      }`}
+    />
+    <button
+      onClick={handleAddOrUpdate}
+      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-800 w-full sm:w-auto"
+    >
+      {editId ? "Update" : "Add"}
+    </button>
+  </div>
+  {errorMessage && <span className="text-red-500 text-sm">{errorMessage}</span>}
+
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <button
+      onClick={() => setFilter("all")}
+      className={`px-4 py-2 rounded-lg ${
+        filter === "all" ? "bg-blue-500 text-white" : "bg-gray-300"
+      }`}
+    >
+      All
+    </button>
+    <button
+      onClick={() => setFilter("pending")}
+      className={`px-4 py-2 rounded-lg ${
+        filter === "pending" ? "bg-blue-500 text-white" : "bg-gray-300"
+      }`}
+    >
+      Pending
+    </button>
+    <button
+      onClick={() => setFilter("completed")}
+      className={`px-4 py-2 rounded-lg ${
+        filter === "completed" ? "bg-blue-500 text-white" : "bg-gray-300"
+      }`}
+    >
+      Completed
+    </button>
+  </div>
+
+  <ul className="space-y-2">
+    {getFilteredTodos().map((todo) => (
+      <li
+        key={todo.id}
+        className={`flex items-center justify-between p-4 rounded-lg shadow ${
+          darkMode
+            ? "border border-slate-800 bg-gray-700 text-white"
+            : "border bg-white text-gray-800"
+        }`}
+      >
+        <div className="flex items-center space-x-2">
           <input
-            autoFocus
-            ref={inputRef}
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Add or edit todo..."
-            className={`flex-1 border rounded-lg px-4 py-2 bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 ${
-              darkMode ? "bg-gray-800" : "bg-white"
-            }`}
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => toggleComplete(todo.id)}
           />
-          <button
-            onClick={handleAddOrUpdate}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-800"
+          <span
+            className={`${todo.completed ? "line-through text-gray-500" : ""}`}
           >
-            {editId ? "Update" : "Add"}
+            {todo.text}
+          </span>
+        </div>
+        <div className="space-x-2">
+          <button
+            onClick={() => {
+              setInputValue(todo.text);
+              setEditId(todo.id);
+            }}
+            className="text-blue-500"
+          >
+            Edit
+          </button>
+          <button onClick={() => deleteTodo(todo.id)} className="text-red-500">
+            Delete
           </button>
         </div>
-        {errorMessage && <span className="text-red-500 text-sm">{errorMessage}</span>}
-      </div>
+      </li>
+    ))}
+  </ul>
+</div>
 
-      <div className="flex justify-center space-x-4">
-        <button
-          onClick={() => setFilter("all")}
-          className={`px-4 py-2 rounded-lg ${
-            filter === "all" ? "bg-blue-500 text-white" : "bg-gray-300"
-          }`}
-        >
-          All
-        </button>
-        <button
-          onClick={() => setFilter("pending")}
-          className={`px-4 py-2 rounded-lg ${
-            filter === "pending" ? "bg-blue-500 text-white" : "bg-gray-300"
-          }`}
-        >
-          Pending
-        </button>
-        <button
-          onClick={() => setFilter("completed")}
-          className={`px-4 py-2 rounded-lg ${
-            filter === "completed" ? "bg-blue-500 text-white" : "bg-gray-300"
-          }`}
-        >
-          Completed
-        </button>
-      </div>
-
-      <ul className="space-y-2">
-        {getFilteredTodos().map((todo) => (
-          <li
-            key={todo.id}
-            className={`flex items-center justify-between p-4 rounded-lg shadow ${
-              darkMode ? "border border-slate-800 bg-gray-700 text-white" : "border bg-white text-gray-800"
-            }`}
-          >
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => toggleComplete(todo.id)}
-              />
-              <span className={`${todo.completed ? "line-through text-gray-500" : ""}`}>
-                {todo.text}
-              </span>
-            </div>
-            <div className="space-x-2">
-              <button
-                onClick={() => {
-                  setInputValue(todo.text);
-                  setEditId(todo.id);
-                }}
-                className="text-blue-500"
-              >
-                Edit
-              </button>
-              <button onClick={() => deleteTodo(todo.id)} className="text-red-500">
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 };

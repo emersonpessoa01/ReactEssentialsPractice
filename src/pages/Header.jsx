@@ -1,35 +1,52 @@
-// import { useContext } from "react";
-// import { AppContext } from "../App";
 import UseAppContext from "../hook/UseAppContext";
 
 const Header = () => {
-  // const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = useContext(AppContext);
   const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = UseAppContext();
+
   return (
-    <header className={`fixed w-full z-30 flex items-center justify-between h-16 px-6 ${darkMode ? "bg-gray-800" : "bg-white"} shadow-lg`}>
-      <div className="flex items-center space-x-4">
-        <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
-          {sidebarOpen ? "◀️" : "▶️"}
+    <div className={`fixed top-0 left-0 right-0 ${darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"} shadow-sm z-40`}>
+      <div className="flex items-center justify-between px-6 py-4">
+        {/* Botão do menu hamburger */}
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)} // Alterna o estado do menu
+          className={`${
+            darkMode
+              ? "text-gray-300 hover:text-white" // Hover claro no modo escuro
+              : "text-gray-600 hover:text-gray-900" // Hover escuro no modo claro
+          }`}
+        >
+          {/* Alterna o ícone entre "hamburger" e "x" */}
+          <i className={`fas ${sidebarOpen ? "fa-times" : "fa-bars"} text-xl`}></i>
         </button>
-        <h1 className="text-xl font-bold">React Components</h1>
+
+        <div className="flex items-center gap-4">
+          {/* Botão para alternar o modo escuro */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className={`${
+              darkMode
+                ? "text-gray-300 hover:text-white" // Hover claro no modo escuro
+                : "text-gray-600 hover:text-gray-900" // Hover escuro no modo claro
+            }`}
+          >
+            <i className={`fas ${darkMode ? "fa-sun" : "fa-moon"} text-xl`}></i>
+          </button>
+          {/* Nome do usuário */}
+          <span className={darkMode ? "text-gray-300" : "text-gray-700"}>Emerson Pessoa</span>
+          {/* Ícone do usuário */}
+          <div
+            className={`w-10 h-10 ${
+              darkMode
+                ? "bg-indigo-500 hover:bg-indigo-400" // Hover claro no modo escuro
+                : "bg-indigo-600 hover:bg-indigo-500" // Hover escuro no modo claro
+            } rounded-full flex items-center justify-center text-white`}
+          >
+            <i className="fas fa-user"></i>
+          </div>
+        </div>
       </div>
-      <div className="flex items-center space-x-4">
-        <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700">
-          {darkMode ? "🌞" : "🌙"}
-        </button>
-        <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">👤</div>
-      </div>
-    </header>
+    </div>
   );
 };
-
-// import PropTypes from "prop-types";
-
-// Header.propTypes = {
-//   darkMode: PropTypes.bool.isRequired,
-//   setDarkMode: PropTypes.func.isRequired,
-//   sidebarOpen: PropTypes.bool.isRequired,
-//   setSidebarOpen: PropTypes.func.isRequired,
-// };
 
 export default Header;

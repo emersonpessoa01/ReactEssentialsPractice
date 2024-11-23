@@ -54,7 +54,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className={`p-6 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
+    <div className={`w-full p-6 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
       <h1 className="text-2xl font-bold mb-4">Formulário de Registro</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Nome */}

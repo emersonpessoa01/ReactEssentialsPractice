@@ -11,11 +11,11 @@ import ImageGallery from "../components/ImageGallery";
 import CountdownTimer from "../components/CountdownTimer";
 import Tabs from "../components/Tabs";
 export default function Main() {
-  const { sidebarOpen, darkMode, loading, currentMode } = UseAppContext();
+  const { darkMode, loading, currentMode } = UseAppContext();
   return (
-    <main className={`pt-16 ${sidebarOpen ? "ml-64" : "ml-0"} transition-all duration-300`}>
+    <main className="pt-16">
       <div className="p-6">
-        <div className={`p-6 rounded-lg ${darkMode ? "bg-gray-800" : "bg-white"} shadow-lg`}>
+        <div className={`flex flex-wrap items-center justify-center max-w-4xl m-auto p-2 rounded-lg ${darkMode ? "bg-gray-800" : "bg-white"} shadow-lg`}>
           {loading ? (
             <Loader />
           ) : (

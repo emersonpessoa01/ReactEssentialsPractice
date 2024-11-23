@@ -27,7 +27,7 @@ export default function BackgroundGradientChanger() {
 
   return (
     <div
-      className="p-6 rounded-lg"
+      className="w-full p-6 rounded-lg"
       style={{
         background: backgroundColor,
         minHeight: "200px",

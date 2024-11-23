@@ -21,14 +21,14 @@ const Sidebar = () => {
           darkMode ? "bg-gray-800 text-white" : "bg-white text-black"
         } shadow-lg overflow-y-auto`}
       >
-        <nav className="p-4">
+        <nav className="pt-20 pl-4 pr-4 pb-4">
           <ul className="space-y-2">
             {menuItems.map((item) => (
               <li key={item.id}>
                 <button
                   onClick={() => handleModuleChange(item.id)}
                   className={`w-full flex items-center space-x-3 p-3 rounded-lg ${
-                    darkMode ? "hover:bg-gray-700" : "hover:bg-blue-800"
+                    darkMode ? "hover:bg-gray-700" : "hover:bg-gray-50"
                   } transition-colors duration-200 ${
                     currentMode === item.id ? "bg-blue-500 text-white" : ""
                   }`}

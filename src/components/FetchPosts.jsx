@@ -14,7 +14,7 @@ const FetchPosts = () => {
           const postsFetch = "https://jsonplaceholder.typicode.com/posts";
           const response = await fetch(postsFetch);
           const data = await response.json();
-          setPosts(data.slice(0, 10)); // Limitando a 10 posts
+          setPosts(data.slice(0, 6)); // Limitando a 10 posts
         } catch (error) {
           console.error("Erro ao buscar os posts:", error);
         } finally {
@@ -59,7 +59,7 @@ const FetchPosts = () => {
 
       {/* Conteúdo após o carregamento */}
       {!loading && (
-        <ul className="space-y-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {posts.map((post) => (
             <li key={post.id} className="border p-4 rounded shadow">
               <h2 className="font-bold">{post.title}</h2>

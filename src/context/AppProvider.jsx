@@ -58,7 +58,7 @@ export default function AppProvider({ children }) {
   }; */
   const [state, dispatch] = useReducer(reducer, {
     darkMode: false,
-    sidebarOpen: true,
+    sidebarOpen: false,
     currentMode: "counter",
     loading: false,
     count: 0,
@@ -149,7 +149,7 @@ export default function AppProvider({ children }) {
         setBackgroundColor: (payload) => dispatch({ type: "SET_BACKGROUND_COLOR", payload }),
       }}
     >
-      <div className={`min-h-screen ${darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-indigo-950"}`}>{children}</div>
+      <div className={`flex flex-col min-h-screen ${darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-indigo-950"}`}>{children}</div>
     </AppContext.Provider>
   );
 }

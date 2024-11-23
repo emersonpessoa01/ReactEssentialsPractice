@@ -1,4 +1,5 @@
 import { useState } from "react";
+import UseAppContext from "../hook/UseAppContext";
 
 const tabsContent = {
   Sobre: "Bem-vindo à aba Sobre! Aqui você encontrará informações sobre nós.",
@@ -6,6 +7,7 @@ const tabsContent = {
 };
 
 const Tabs = () => {
+  const{darkMode}=UseAppContext();
   const [activeTab, setActiveTab] = useState("Sobre");
 
   return (
@@ -22,7 +24,7 @@ const Tabs = () => {
           </button>
         ))}
       </div>
-      <div className="border p-4 rounded bg-gray-100">{tabsContent[activeTab]}</div>
+      <div className={`border p-4 rounded bg-gray-100 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}>{tabsContent[activeTab]}</div>
     </div>
   );
 };
