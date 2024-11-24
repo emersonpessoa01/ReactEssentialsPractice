@@ -23,8 +23,8 @@ const ImageGallery = () => {
 
   return (
     <div className="w-full h-full">
-      <h1 className="text-2xl font-bold mb-4">Galeria de Imagens</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 w-full sm:w-auto gap-4">
+      <h1 className="text-2xl text-center pt-4 font-bold mb-4">Galeria de Imagens</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full sm:w-auto gap-4 p-4">
         {images.map((src, index) => (
           <img
             key={index}
