@@ -10,15 +10,15 @@ const FetchPosts = () => {
     try {
       setTimeout(async () => {
         try {
-          const postsFetch = "https://dummyjson.com/c/d156-f396-4ee5-a988"; // URL fornecida
+          const postsFetch = "https://dummyjson.com/c/8f9f-90ea-49c0-a764"; // URL fornecida
           const response = await fetch(postsFetch);
           const data = await response.json();
 
           console.log("Resposta da API:", data);
 
-          // Agora acessamos a chave 'images' do objeto
+          // Verifica se há imagens disponíveis
           if (data && Array.isArray(data.images)) {
-            setPosts(data.images.slice(0, 6)); // Limita a 5 imagens
+            setPosts(data.images.slice(0, 6)); // Limita a 6 imagens
           } else {
             console.error("Formato de dados inesperado:", data);
           }
@@ -39,14 +39,14 @@ const FetchPosts = () => {
   }, []);
 
   return (
-    <div className="p-6">
+    <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Lista de Imagens</h1>
 
       {/* Botão para recarregar os posts */}
       <button
         onClick={fetchPosts}
         className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center justify-center"
-        disabled={loading} // Desativa o botão enquanto carrega
+        disabled={loading}
       >
         {loading ? (
           <span className="flex items-center">
@@ -68,9 +68,15 @@ const FetchPosts = () => {
       {!loading && (
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {posts.map((post, index) => (
-            <li key={index} className="border p-4 rounded shadow">
-              <img src={post.url} alt={post.description} className="w-full h-auto mb-2 rounded" />
-              <p>{post.description}</p>
+            <li key={index} className="rounded-md border shadow hover:shadow-xl transition duration-300 ease-in-out overflow-hidden">
+              <div className="w-full overflow-hidden">
+                <img
+                  src={post.url}
+                  alt={post.description || `Imagem ${index + 1}`}
+                  className="margin-auto rounded-t-md w-full h-full block max-w-screen-sm transform scale-100 hover:scale-110 transition-transform duration-500 ease-in-out"
+                />
+              </div>
+              <p className="p-2 pt-4">{post.description || "Sem descrição"}</p>
             </li>
           ))}
         </ul>

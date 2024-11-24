@@ -15,7 +15,7 @@ export default function Main() {
   return (
     <main className="pt-16">
       <div className="p-6">
-        <div className={`flex flex-wrap items-center justify-center max-w-4xl m-auto p-2 rounded-lg ${darkMode ? "bg-gray-800" : "bg-white"} shadow-lg`}>
+        <div className={`flex flex-wrap items-center justify-center max-w-4xl m-auto rounded-lg ${darkMode ? "bg-gray-800" : "bg-white"} shadow-lg`}>
           {loading ? (
             <Loader />
           ) : (
