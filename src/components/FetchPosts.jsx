@@ -10,7 +10,7 @@ const FetchPosts = () => {
     try {
       setTimeout(async () => {
         try {
-          const postsFetch = "https://dummyjson.com/c/8ed2-a6da-4c8d-87d8"; // URL fornecida
+          const postsFetch = "https://dummyjson.com/c/11c1-ebe2-4da4-a2c1"; // URL fornecida
           const response = await fetch(postsFetch);
           const data = await response.json();
 
@@ -72,10 +72,13 @@ const FetchPosts = () => {
               <div className="w-full overflow-hidden">
                 <img
                   src={post.url}
-                  alt={post.description || `Imagem ${index + 1}`}
+                  alt={post.title || `Imagem ${index + 1}`}
+                  loading="lazy"
+                  title={post.title || `Imagem ${index + 1}`}
                   className="margin-auto rounded-t-md w-full h-full block max-w-screen-sm transform scale-100 hover:scale-110 transition-transform duration-500 ease-in-out"
                 />
               </div>
+              <h3 className="pl-2 pr-2 text-lg font-bold text-center mt-2">{post.title || `Imagem ${index + 1}`}</h3>
               <p className="p-2 pt-4">{post.description || "Sem descrição"}</p>
             </li>
           ))}

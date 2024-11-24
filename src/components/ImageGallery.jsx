@@ -1,7 +1,11 @@
 import { useState } from "react";
 import UseAppContext from "../hook/UseAppContext";
 
-const images = ["https://via.placeholder.com/300x200", "https://via.placeholder.com/300x201", "https://via.placeholder.com/300x202"];
+const images = [
+  "https://via.placeholder.com/300x200", 
+  "https://via.placeholder.com/300x201", 
+  "https://via.placeholder.com/300x202"
+];
 
 const ImageGallery = () => {
   const { darkMode } = UseAppContext();
@@ -23,7 +27,7 @@ const ImageGallery = () => {
 
   return (
     <div className="w-full h-full">
-      <h1 className="text-2xl text-center pt-4 font-bold mb-4">Galeria de Imagens</h1>
+      <h1 className="text-2xl font-bold mb-4">Galeria de Imagens</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 w-full sm:w-auto gap-4 p-4">
         {images.map((src, index) => (
           <img
@@ -49,7 +53,10 @@ const ImageGallery = () => {
               <button onClick={closeModal} className="bg-red-500 text-white rounded-full px-4 py-2">
                 Fechar
               </button>
-              <button onClick={() => navigateImages("next")} className={`bg-white rounded-full px-4 py-2 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
+              <button
+                onClick={() => navigateImages("next")}
+                className={`bg-white rounded-full px-4 py-2 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}
+              >
                 Próxima ➡
               </button>
             </div>
