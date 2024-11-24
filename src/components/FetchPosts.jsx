@@ -8,19 +8,26 @@ const FetchPosts = () => {
   const fetchPosts = async () => {
     setLoading(true);
     try {
-      // Atraso para mostrar a animação de carregamento
       setTimeout(async () => {
         try {
-          const postsFetch = "https://jsonplaceholder.typicode.com/posts";
+          const postsFetch = "https://dummyjson.com/c/d156-f396-4ee5-a988"; // URL fornecida
           const response = await fetch(postsFetch);
           const data = await response.json();
-          setPosts(data.slice(0, 6)); // Limitando a 10 posts
+
+          console.log("Resposta da API:", data);
+
+          // Agora acessamos a chave 'images' do objeto
+          if (data && Array.isArray(data.images)) {
+            setPosts(data.images.slice(0, 6)); // Limita a 5 imagens
+          } else {
+            console.error("Formato de dados inesperado:", data);
+          }
         } catch (error) {
           console.error("Erro ao buscar os posts:", error);
         } finally {
           setLoading(false);
         }
-      }, 3000); // Atraso de 500ms (meio segundo)
+      }, 3000);
     } catch (error) {
       console.error("Erro ao buscar os posts:", error);
       setLoading(false);
@@ -33,7 +40,7 @@ const FetchPosts = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Lista de Posts</h1>
+      <h1 className="text-2xl font-bold mb-4">Lista de Imagens</h1>
 
       {/* Botão para recarregar os posts */}
       <button
@@ -60,10 +67,10 @@ const FetchPosts = () => {
       {/* Conteúdo após o carregamento */}
       {!loading && (
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {posts.map((post) => (
-            <li key={post.id} className="border p-4 rounded shadow">
-              <h2 className="font-bold">{post.title}</h2>
-              <p>{post.body}</p>
+          {posts.map((post, index) => (
+            <li key={index} className="border p-4 rounded shadow">
+              <img src={post.url} alt={post.description} className="w-full h-auto mb-2 rounded" />
+              <p>{post.description}</p>
             </li>
           ))}
         </ul>
