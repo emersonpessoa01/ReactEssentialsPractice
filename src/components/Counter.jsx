@@ -1,11 +1,18 @@
 import UseAppContext from "../hook/UseAppContext";
 
 export default function Counter() {
-  const { count, setCount } = UseAppContext();
+  const { count, setCount,darkMode } = UseAppContext();
 
   return (
     <div className="w-full rounded-lg p-6 space-y-4">
-      <h2 className="text-2xl font-bold">Counter</h2>
+      <h2
+        style={{
+          color: darkMode ? "rgb(178 0 255)" : "rgb(0, 0, 255)", // Cor vermelha no modo escuro e azul no modo claro
+        }}
+        className="text-2xl font-bold"
+      >
+        Counter
+      </h2>
       <div className="text-4xl font-bold">{count}</div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <button

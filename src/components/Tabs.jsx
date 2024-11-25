@@ -18,7 +18,14 @@ const Tabs = () => {
 
   return (
     <div className="w-full p-6">
-      <h1 className="text-xl font-bold mb-4 text-blue-700">Excelência Pessoal: A Força da Disciplina, Planejamento, Metas e Prática</h1>
+      <h1
+        style={{
+          color: darkMode ? "rgb(178 0 255)" : "rgb(0, 0, 255)", // Cor vermelha no modo escuro e azul no modo claro
+        }}
+        className="text-xl font-bold mb-4 text-blue-700"
+      >
+        Excelência Pessoal: A Força da Disciplina, Planejamento, Metas e Prática
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-1">
         {Object.keys(tabsContent).map((tab) => (
           <button
@@ -30,7 +37,9 @@ const Tabs = () => {
           </button>
         ))}
       </div>
-      <div className={`border mt-2 p-4 rounded bg-gray-100 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}>{tabsContent[activeTab]}</div>
+      <div className={`border mt-2 p-4 rounded bg-gray-100 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
+        {tabsContent[activeTab]}
+      </div>
     </div>
   );
 };

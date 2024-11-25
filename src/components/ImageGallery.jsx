@@ -15,6 +15,7 @@ const media = [
   { type: "video", src: "https://i.imgur.com/AEnTwW8.mp4" }, // Exemplo de vídeo
   { type: "video", src: "https://i.imgur.com/AmYbvx1.mp4" }, // Exemplo de vídeo
   { type: "video", src: "https://i.imgur.com/l81pTJX.mp4" }, // Exemplo de vídeo
+  { type: "video", src: "https://i.imgur.com/sXbWaFL.mp4" }, // Exemplo de vídeo
 ];
 
 const MediaGallery = () => {

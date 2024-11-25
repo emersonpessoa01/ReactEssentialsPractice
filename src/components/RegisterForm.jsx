@@ -55,7 +55,14 @@ const RegisterForm = () => {
 
   return (
     <div className={`w-full p-6 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
-      <h1 className="text-2xl font-bold mb-4">Formulário de Registro</h1>
+      <h1
+        style={{
+          color: darkMode ? "rgb(178 0 255)" : "rgb(0, 0, 255)", // Cor vermelha no modo escuro e azul no modo claro
+        }}
+        className="text-2xl font-bold mb-4"
+      >
+        Formulário de Registro
+      </h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Nome */}
         <div>
