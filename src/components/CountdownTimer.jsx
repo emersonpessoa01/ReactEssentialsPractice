@@ -4,13 +4,15 @@ import { AppContext } from "../App";
 
 const CountdownTimer = () => {
   const { darkMode } = UseAppContext(AppContext);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(0); // Tempo em milésimos de segundo
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     let interval;
     if (isRunning && time > 0) {
-      interval = setInterval(() => setTime((prev) => prev - 1), 1000);
+      interval = setInterval(() => {
+        setTime((prev) => prev - 10); // Decrementa em 10 milésimos de segundo (0.01s)
+      }, 10); // Atualiza a cada 10 milésimos de segundo
     }
     if (time === 0 && isRunning) {
       alert("Tempo acabou!");
@@ -24,6 +26,17 @@ const CountdownTimer = () => {
     setIsRunning(false);
   };
 
+  // Formatar o tempo para minutos, segundos e milésimos
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60000); // 60000 ms = 1 minuto
+    const seconds = Math.floor((time % 60000) / 1000); // Restante em segundos
+    const milliseconds = time % 1000; // Restante em milésimos de segundo
+
+    return `${minutes}:${seconds.toString().padStart(2, '0')}:${milliseconds
+      .toString()
+      .padStart(3, '0')}`; // Formata como mm:ss:ms
+  };
+
   return (
     <div className="w-full p-6">
       <h1 className="text-2xl font-bold mb-4">Timer com Alerta</h1>
@@ -31,22 +44,31 @@ const CountdownTimer = () => {
         <input
           type="number"
           min="0"
-          value={time}
-          onChange={(e) => setTime(Number(e.target.value))}
+          value={time / 1000} // Dividido por 1000 para exibir o valor em segundos
+          onChange={(e) => setTime(Number(e.target.value) * 1000)} // Multiplicado por 1000 para converter para milésimos de segundo
           className={`flex-1 border rounded-lg px-4 py-2 bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 ${
             darkMode ? "bg-gray-800" : "bg-white"
           }`}
         />
       </div>
-      <div className="text-4xl font-bold mb-4">{time}s</div>
+      <div className="text-4xl font-bold mb-4">{formatTime(time)}</div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <button onClick={() => setIsRunning(true)} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+        <button
+          onClick={() => setIsRunning(true)}
+          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+        >
           Iniciar
         </button>
-        <button onClick={() => setIsRunning(false)} className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
+        <button
+          onClick={() => setIsRunning(false)}
+          className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+        >
           Pausar
         </button>
-        <button onClick={resetTimer} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button
+          onClick={resetTimer}
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
           Resetar
         </button>
       </div>
