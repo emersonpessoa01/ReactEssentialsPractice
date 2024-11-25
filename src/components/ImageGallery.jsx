@@ -7,6 +7,7 @@ const media = [
   { type: "image", src: "https://i.imgur.com/p3uXStT.jpeg" },
   { type: "image", src: "https://i.imgur.com/0dhzi23.jpeg" },
   { type: "image", src: "https://i.imgur.com/es2yhM0.jpeg" },
+  { type: "image", src: "https://i.imgur.com/DpN66MB.jpeg" },
   { type: "image", src: "https://i.imgur.com/BzOzJTe.jpeg" },
   { type: "image", src: "https://i.imgur.com/ypUAccM.jpeg" },
   { type: "video", src: "https://i.imgur.com/8vsNSs7.mp4" }, // Exemplo de vídeo
@@ -36,7 +37,14 @@ const MediaGallery = () => {
 
   return (
     <div className="w-full h-full">
-      <h1 className="text-2xl text-center pt-4 font-bold mb-4">Galeria de Mídia</h1>
+      <h1
+        style={{
+          color: darkMode ? "rgb(178 0 255)" : "rgb(0, 0, 255)", // Cor vermelha no modo escuro e azul no modo claro
+        }}
+        className="text-2xl text-center pt-4 font-bold mb-4"
+      >
+        Galeria de Mídia
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 w-full sm:w-auto gap-4 p-4">
         {media.map((item, index) => (
           <div key={index} className="cursor-pointer border rounded overflow-hidden hover:opacity-75" onClick={() => setSelectedMediaIndex(index)}>
@@ -52,7 +60,11 @@ const MediaGallery = () => {
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center">
           <div className="relative flex flex-col items-center w-full">
             {media[selectedMediaIndex].type === "image" ? (
-              <img src={media[selectedMediaIndex].src} alt={`Mídia ${selectedMediaIndex + 1}`} className="image-modal p-4 rounded-3xl w-full max-w-screen-sm" />
+              <img
+                src={media[selectedMediaIndex].src}
+                alt={`Mídia ${selectedMediaIndex + 1}`}
+                className="image-modal p-4 rounded-3xl w-full max-w-screen-sm"
+              />
             ) : (
               <video src={media[selectedMediaIndex].src} controls autoPlay className="video-modal p-4 rounded-3xl w-full max-w-screen-sm" />
             )}
