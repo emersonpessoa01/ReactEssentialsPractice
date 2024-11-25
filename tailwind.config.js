@@ -14,5 +14,8 @@ export default {
       },
     }, // Adicione personalizações aqui se necessário
   },
-  plugins: [], // Adicione plugins aqui, se necessário
+  plugins: [
+    // eslint-disable-next-line no-undef
+    require("daisyui"),
+  ], // Adicione plugins aqui, se necessário
 };
