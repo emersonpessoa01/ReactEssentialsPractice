@@ -8,7 +8,7 @@ const Timer = () => {
     let interval;
     if (isRunning) {
       interval = setInterval(() => {
-        setSeconds((prev) => prev + 1);
+        setSeconds((prev) => prev + 1); // Incrementa os segundos
       }, 1000);
     } else if (!isRunning && seconds !== 0) {
       clearInterval(interval);
@@ -21,10 +21,21 @@ const Timer = () => {
     setIsRunning(false);
   };
 
+  // Função para formatar o tempo em horas, minutos e segundos
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600); // 3600 segundos = 1 hora
+    const minutes = Math.floor((seconds % 3600) / 60); // Restante para minutos
+    const remainingSeconds = seconds % 60; // Restante para segundos
+
+    return `${hours.toString().padStart(2, '0')}:${minutes
+      .toString()
+      .padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`; // Formato HH:mm:ss
+  };
+
   return (
-    <div className="w-full p-6 ">
+    <div className="w-full p-6">
       <h1 className="text-2xl font-bold mb-4">Temporizador</h1>
-      <div className="text-4xl font-bold mb-4">{seconds}s</div>
+      <div className="text-4xl font-bold mb-4">{formatTime(seconds)}</div> {/* Exibe o tempo formatado */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <button
           onClick={() => setIsRunning(true)}
