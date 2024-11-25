@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Spinners from "../spinners/Spinners";
+import UseAppContext from "../hook/UseAppContext";
 
 const FetchPosts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { darkMode } = UseAppContext();
 
   const fetchPosts = async () => {
     setLoading(true);
@@ -37,6 +39,15 @@ const FetchPosts = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  // Aplique a classe 'dark' ao body para ativar o modo escuro com base no estado
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <div className="p-4">
@@ -73,15 +84,21 @@ const FetchPosts = () => {
                 <img
                   src={post.url}
                   alt={post.title || `Imagem ${index + 1}`}
-                  loading="lazy"
                   title={post.title || `Imagem ${index + 1}`}
                   className="margin-auto rounded-t-md w-full h-full block max-w-screen-sm transform scale-100 hover:scale-110 transition-transform duration-500 ease-in-out"
                 />
               </div>
-              <h3 className="pl-2 pr-2 text-lg font-bold text-center mt-2">{post.title || `Imagem ${index + 1}`}</h3>
+              <h3
+                style={{
+                  color: darkMode ? "rgb(178 0 255)" : "rgb(0, 0, 255)", // Cor vermelha no modo escuro e azul no modo claro
+                }}
+                className={`title-card pl-2 pr-2 font-bold text-center mt-2 $`}
+              >
+                {post.title || `Imagem ${index + 1}`}
+              </h3>
               <p className="p-2 pt-4">{post.description || "Sem descrição"}</p>
             </li>
-          ))}
+          ))}{" "}
         </ul>
       )}
     </div>

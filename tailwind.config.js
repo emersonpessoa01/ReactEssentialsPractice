@@ -7,7 +7,12 @@ export default {
     "./index.html", // Certifique-se de incluir o HTML ou outros arquivos que utilizam Tailwind
   ],
   theme: {
-    extend: {}, // Adicione personalizações aqui se necessário
+    extend: {
+      colors: {
+        "red-custom": "#FF0000", // Cor personalizada em hexadecimal
+        "blue-custom": "#0000FF", // Outra cor personalizada
+      },
+    }, // Adicione personalizações aqui se necessário
   },
   plugins: [], // Adicione plugins aqui, se necessário
 };

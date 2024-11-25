@@ -2,36 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: white;
-  color: #1f2937;
-}
-
-body.dark {
-  background-color: #111827;
-  color: #e5e7eb;
-}
-
 :root {
   --color-primary: #4f46e5;
   --color-secondary: #1b13bd;
 }
-@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&amp;display=swap");
 
 * {
   margin: 0px;
   padding: 0px;
   text-decoration: none;
   list-style: none;
-  font-family: "UniSans", "Uni Neue", "Nunito", sans-serif;
+  font-family: "UniSans", sans-serif;
   box-sizing: border-box;
 }
 @font-face {
   font-family: "UniSans";
-  src: url("../fonts/Uni\ Sans\ Regular.woff") format("woff"), url("../fonts/Uni\ Sans\ Light.woff") format("woff"),
-    url("../fonts/Uni\ Sans\ Bold.woff") format("woff"), url("../fonts/Uni\ Sans\ Bold\ Italic.woff") format("woff"),
-    url("../fonts/Uni\ Sans\ Book.woff") format("woff"), url("../fonts/Uni\ Sans\ Book\ Italic.woff") format("woff"),
-    url("../fonts/Uni\ Sans\ Medium.woff") format("woff"), url("../fonts/Uni\ Sans\ Medium\ Italic.woff") format("woff");
+  src: url("../assets/fonts/UniSans-Bold.woff") format("woff"), url("../assets/fonts/UniSans-Bold-Italic.woff") format("woff"),
+    url("../assets/fonts/UniSans-Book.woff") format("woff"), url("../assets/fonts/UniSans-Book-Italic.woff") format("woff"),
+    url("../assets/fonts/UniSans-Heavy.woff") format("woff"), url("../assets/fonts/UniSans-Heavy-Italic.woff") format("woff"),
+    url("../assets/fonts/UniSans-Italic.woff") format("woff");
 }
 
 html {
@@ -42,7 +31,6 @@ html {
   overflow-y: scroll; /* Força a barra de rolagem vertical, se necessário */
   scroll-padding-top: 9rem;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
   scrollbar-color: var(--color-primary) transparent;
 }
 
@@ -62,6 +50,17 @@ html::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
 }
+
+body {
+  background-color: white;
+  color: #1f2937;
+}
+
+body.dark {
+  background-color: #111827;
+  color: #e5e7eb;
+}
+/* Adicione isso no seu tailwind.css ou no arquivo CSS global */
 
 main {
   flex: 1; /* Permite que o main ocupe o espaço disponível */
@@ -98,11 +97,11 @@ input[type="number"] {
   appearance: textfield; /* Para navegadores como Edge */
 }
 
-.text-lg.font-bold.text-center.mt-2 {
-  font-size: 1rem;
+.title-card {
+  font-size: 1.2rem;
   text-align: left;
   line-height: 24px;
-  color: var(--color-secondary);
+  /* color: var(--color-secondary); */
   letter-spacing: 1%;
   display: -webkit-box;
   -webkit-line-clamp: 2;
