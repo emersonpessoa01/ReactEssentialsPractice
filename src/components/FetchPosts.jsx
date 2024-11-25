@@ -50,7 +50,9 @@ const FetchPosts = () => {
   }, [darkMode]);
 
   return (
-    <div className="p-4">
+    
+    <div className="container-posts p-4">
+      
       <h1 className="text-2xl font-bold mb-4">Lista de Imagens</h1>
 
       {/* Botão para recarregar os posts */}
@@ -77,6 +79,7 @@ const FetchPosts = () => {
 
       {/* Conteúdo após o carregamento */}
       {!loading && (
+        
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {posts.map((post, index) => (
             <li key={index} className="rounded-md border shadow hover:shadow-xl transition duration-300 ease-in-out overflow-hidden">

@@ -108,3 +108,6 @@ input[type="number"] {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.container-posts{
+  background-image: url("../assets/video/video02.mp4");
+}
