@@ -59,7 +59,7 @@ const scrollTopStyles = {
   cursor: "pointer",
   opacity: "0",
   visibility: "hidden",
-  transition: "all .8s ease-in-out",
+  transition: "all 1s ease-in-out",
 };
 const scrollTopActiveStyles = {
   opacity: "1",

@@ -1,4 +1,5 @@
 import UseAppContext from "../hook/UseAppContext";
+import logo from "../assets/image/1.png";
 
 const Header = () => {
   const { darkMode, setDarkMode, sidebarOpen, setSidebarOpen } = UseAppContext();
@@ -35,12 +36,14 @@ const Header = () => {
           {/* Nome do usuário */}
           <span className={darkMode ? "text-gray-300" : "text-gray-700"}>Emerson Pessoa</span>
           {/* Ícone do usuário */}
-          <div
+          {/* <div
             className={`w-10 h-10 ${
               darkMode ? "bg-indigo-500 hover:bg-indigo-400" : "bg-indigo-600 hover:bg-indigo-500"
             } rounded-full flex items-center justify-center text-white`}
-          >
-            <i className="fas fa-user"></i>
+          > */}
+          <div className={`overflow-hidden w-10 h-10 flex items-center justify-center text-white` }>
+            {/* <i className="fas fa-user"></i> */}
+            <img src={logo} style={{ height: "2.4rem", borderRadius: "50%" }} alt="logo" />
           </div>
         </div>
       </div>
