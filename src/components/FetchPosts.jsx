@@ -13,7 +13,7 @@ const FetchPosts = () => {
     try {
       setTimeout(async () => {
         try {
-          const postsFetch = "https://dummyjson.com/c/11c1-ebe2-4da4-a2c1"; // URL fornecida
+          const postsFetch = "https://dummyjson.com/c/1e23-0593-4d02-a4e0"; // URL fornecida
           const response = await fetch(postsFetch);
           const data = await response.json();
 
