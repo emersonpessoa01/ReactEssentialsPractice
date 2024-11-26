@@ -2,17 +2,17 @@ import UseAppContext from "../hook/UseAppContext";
 import { menuItems } from "./menuItems";
 
 const Sidebar = () => {
-  const { sidebarOpen, darkMode, handleModuleChange, currentMode, setSidebarOpen } = UseAppContext();
+  const { sidebarOpen, darkMode, handleModuleChange, currentMode} = UseAppContext();
 
   return (
     <>
       {/* Overlay */}
-      {sidebarOpen && (
+      {/* {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-20"
           onClick={() => setSidebarOpen(false)} // Fecha a sidebar ao clicar no overlay
         ></div>
-      )}
+      )} */}
       {/* Sidebar */}
       <aside
         className={`fixed z-30 left-0 top-0 h-full w-64 transform ${
