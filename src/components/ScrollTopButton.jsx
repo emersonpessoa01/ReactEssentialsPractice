@@ -54,7 +54,7 @@ const scrollTopStyles = {
   justifyContent: "center",
   position: "fixed",
   right: "20px",
-  zIndex: "10",
+  zIndex: "1",
   boxShadow: "0 1px 6px 2px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.7)",
   cursor: "pointer",
   opacity: "0",

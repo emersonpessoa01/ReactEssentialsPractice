@@ -2,7 +2,7 @@ import UseAppContext from "../hook/UseAppContext";
 import { menuItems } from "./menuItems";
 
 const Sidebar = () => {
-  const { sidebarOpen, darkMode, handleModuleChange, currentMode} = UseAppContext();
+  const { sidebarOpen, darkMode, handleModuleChange, setSidebarOpen, currentMode } = UseAppContext();
 
   return (
     <>
@@ -10,7 +10,7 @@ const Sidebar = () => {
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-20"
-          onClick={() => handleModuleChange(null)} // Close the sidebar when clicking the overlay
+          onClick={() => setSidebarOpen(false)} // Apenas fecha o sidebar
         ></div>
       )}
       {/* Sidebar */}
@@ -26,7 +26,10 @@ const Sidebar = () => {
             {menuItems.map((item) => (
               <li key={item.id}>
                 <button
-                  onClick={() => handleModuleChange(item.id)}
+                  onClick={() => {
+                    handleModuleChange(item.id);
+                    setSidebarOpen(false); // Fecha o sidebar ao selecionar um item
+                  }}
                   className={`w-full flex items-center space-x-3 p-3 rounded-lg ${
                     darkMode ? "hover:bg-gray-700" : "hover:bg-gray-50"
                   } transition-colors duration-200 ${
