@@ -36,7 +36,9 @@ const MediaGallery = () => {
   const calculateDelay = (index) => {
     const baseDelay = 600; // Primeiro intervalo
     const step = 200; // Intervalo entre cada item
-    return baseDelay + Math.floor(index / 2) * 400 + (index % 2) * step;
+    // return baseDelay + Math.floor(index / 2) * 400 + (index % 2) * step;
+    return baseDelay + (index - 1) * step; // Intervalo entre cada item
+    // 600 + (index - 1) * 200
   };
 
   const closeModal = () => {
@@ -69,8 +71,7 @@ const MediaGallery = () => {
             key={index}
             className="cursor-pointer border rounded overflow-hidden hover:opacity-75"
             onClick={() => setSelectedMediaIndex(index)}
-            data-aos="fade-up"
-            data-aos-delay={calculateDelay(index)} // Delay calculado para cada par
+            data-aos="fade-up" data-aos-anchor-placement="center-bottom" data-aos-delay={calculateDelay(index)} // Delay calculado para cada par
           >
             {item.type === "image" ? (
               <img src={item.src} alt={`Mídia ${index + 1}`} className="w-full" />
