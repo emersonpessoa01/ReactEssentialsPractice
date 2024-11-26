@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import UseAppContext from "../hook/UseAppContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ScrollTopButton from "./ScrollTopButton";
 
 const media = [
   // { type: "image", src: "https://via.placeholder.com/300x200" },
@@ -113,6 +114,7 @@ const MediaGallery = () => {
           </div>
         </div>
       )}
+      <ScrollTopButton />
     </div>
   );
 };
