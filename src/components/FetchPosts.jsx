@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Spinners from "../spinners/Spinners";
 import UseAppContext from "../hook/UseAppContext";
+import ScrollTopButton from "./ScrollTopButton";
 
 const FetchPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -104,6 +105,7 @@ const FetchPosts = () => {
           ))}{" "}
         </ul>
       )}
+      <ScrollTopButton />
     </div>
   );
 };
