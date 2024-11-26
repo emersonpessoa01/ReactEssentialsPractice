@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import UseAppContext from "../hook/UseAppContext";
 
 const Timer = () => {
+  const { darkMode } = UseAppContext();
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -27,32 +29,28 @@ const Timer = () => {
     const minutes = Math.floor((seconds % 3600) / 60); // Restante para minutos
     const remainingSeconds = seconds % 60; // Restante para segundos
 
-    return `${hours.toString().padStart(2, '0')}:${minutes
-      .toString()
-      .padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`; // Formato HH:mm:ss
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`; // Formato HH:mm:ss
   };
 
   return (
     <div className="w-full p-6">
-      <h1 className="text-2xl font-bold mb-4">Temporizador</h1>
+      <h1
+        style={{
+          color: darkMode ? "rgb(178 0 255)" : "rgb(0, 0, 255)", // Cor vermelha no modo escuro e azul no modo claro
+        }}
+        className="text-2xl font-bold mb-4"
+      >
+        Temporizador
+      </h1>
       <div className="text-4xl font-bold mb-4">{formatTime(seconds)}</div> {/* Exibe o tempo formatado */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <button
-          onClick={() => setIsRunning(true)}
-          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-        >
+        <button onClick={() => setIsRunning(true)} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
           Iniciar
         </button>
-        <button
-          onClick={() => setIsRunning(false)}
-          className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-        >
+        <button onClick={() => setIsRunning(false)} className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">
           Pausar
         </button>
-        <button
-          onClick={resetTimer}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-        >
+        <button onClick={resetTimer} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
           Resetar
         </button>
       </div>

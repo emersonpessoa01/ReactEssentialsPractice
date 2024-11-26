@@ -14,7 +14,7 @@ const FilterList = () => {
         onClick={() => setDarkMode(!darkMode)} // Alterna o modo escuro
         className={`px-4 py-2 mb-4 rounded ${darkMode ? "bg-gray-200 text-gray-600" : "bg-gray-600 text-gray-100"}`}
       >
-        {darkMode ? "Modo Escuro" : "Modo Claro"}
+        {darkMode ? "Modo Claro" : "Modo Escuro"}
       </button>
       <input
         autoFocus
