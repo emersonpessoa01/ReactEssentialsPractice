@@ -96,7 +96,7 @@ const FetchPosts = () => {
                 style={{
                   color: darkMode ? "rgb(178 0 255)" : "rgb(0, 0, 255)", // Cor vermelha no modo escuro e azul no modo claro
                 }}
-                className={`title-card pl-2 pr-2 font-bold text-center mt-2 $`}
+                className="title-card pl-2 pr-2 font-bold text-center mt-2 height-6"
               >
                 {post.title || `Imagem ${index + 1}`}
               </h3>
