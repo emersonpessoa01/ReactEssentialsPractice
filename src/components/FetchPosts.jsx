@@ -13,7 +13,7 @@ const FetchPosts = () => {
     try {
       setTimeout(async () => {
         try {
-          const postsFetch = "https://dummyjson.com/c/da4a-b4dd-473d-9fe4"; // URL fornecida
+          const postsFetch = "https://dummyjson.com/c/55f9-8d5f-4bf9-8495"; // URL fornecida
           const response = await fetch(postsFetch);
           const data = await response.json();
 
@@ -62,7 +62,6 @@ const FetchPosts = () => {
         className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center justify-center"
         disabled={loading}
       >
-      {/* Ícone de carregamento */}
         {loading ? (
           <span className="flex items-center">
             <i className="fas fa-spinner fa-spin mr-2"></i> Carregando...
