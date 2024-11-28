@@ -535,7 +535,7 @@ O método `handleSubmit`:
 
 ## Descrição do Código: `FetchPosts` - Busca e Exibição de Posts
 
-Este código implementa um componente React chamado **`FetchPosts`** que realiza a busca de dados da API [JSONPlaceholder](https://jsonplaceholder.typicode.com/) e exibe uma lista de posts com suporte a animações de carregamento.
+Este código implementa um componente React chamado **`FetchPosts`** que realiza a busca de dados da API [dummyJSON](https://dummyjson.com/c/55f9-8d5f-4bf9-8495) e exibe uma lista de posts com suporte a animações de carregamento.
 
 ---
 
